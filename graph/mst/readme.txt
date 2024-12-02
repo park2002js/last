@@ -6,3 +6,5 @@ M represents the number of edges in the graph.
 
 The following M lines describe the edges of the graph. Each line consists of 3 integers A, B, and C, each separated by a space.
 A and B represent the two endpoints of the edge. C represents the weight of the edge.
+
+The file contains no duplicate edges.
