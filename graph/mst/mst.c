@@ -202,7 +202,7 @@ int main()
 	}
 
 	prim(&g, V, E);
-	//kruskal(&g, V, E);
+	kruskal(&g, V, E);
 
 	graph_destroy(&g, V);
 	fclose(prim_fp);
