@@ -1,1 +1,5 @@
 serch-tree here
+
+local value return -> 함수가 끝나면 삭제
+
+local value를 인자로 받은 포인터에 넘김 -> 삭제가 되지 않아?
