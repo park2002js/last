@@ -90,12 +90,19 @@ int graph_check_cycle(graph *g, int V)
 
 void graph_fprint(FILE *f, graph *g, int V)
 {
+	int span = 0;
+
 	for (int i = 0; i < V; i++) {
 		for (int j = 0; j < g->degree[i]; j++) {
 			if (i < g->conn[i][j].x)
+			{
 				fprintf(f, "%d-%d (weight: %d)\n", i, g->conn[i][j].x, g->conn[i][j].y);
+				span += g->conn[i][j].y;
+			}
 		}
 	}
+
+	printf("span: %d\n", span);
 }
 
 void prim(graph *g, int V, int E)
@@ -108,6 +115,7 @@ void prim(graph *g, int V, int E)
 	graph mst;
 	graph_init(&mst, V);
 	int *vis = calloc(V, sizeof(int));
+	vis[0] = 1;
 
 	while (vcnt < V) {
 		int v1, v2;
