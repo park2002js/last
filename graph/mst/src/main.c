@@ -8,15 +8,17 @@ extern void kruskal(graph*, int, int);
 
 int main()
 {
+	FILE *input = fopen("graph.txt", "r");
+
 	int V, E;
-	scanf("%d %d", &V, &E);
+	fscanf(input, "%d %d", &V, &E);
 
 	graph g;
 	graph_init(&g, V);
 
 	for (int i = 0; i < E; i++) {
 		int a, b, c;
-		scanf("%d %d %d", &a, &b, &c);
+		fscanf(input, "%d %d %d", &a, &b, &c);
 		g.conn[a][g.degree[a]++] = (pair) {b, c};
 		g.conn[b][g.degree[b]++] = (pair) {a, c};
 	}
@@ -25,5 +27,6 @@ int main()
 	kruskal(&g, V, E);
 
 	graph_destroy(&g, V);
+	fclose(input);
 	return 0;
 }
