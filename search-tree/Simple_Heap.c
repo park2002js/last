@@ -1,25 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define M_Size 10
+int M_Size 10
 
-void insertHeap(int list[], int key){
+void insertHeap(int heap[], int key){
 
-    int size = list[0];
+    int size = heap[0];
     int index = size+1;
-    int parent;
+    int parent = index/2;
 
-    list[index] = key;
-    list[0] = list[0]+1;
+    heap[index] = key;
+    heap[0] = heap[0]+1;
 
     while (index>=1)
     {
-        if(index%2){
-            parent = (index-1)/2;
-        }else {
-            parent = index/2;
-        }
+        parent = index/2;
         // 변경조건
         // max heap : parent < child  || min heap : parent > child
+        // parent >= 1 혹은 child > 1
         if(parent >=1 && list[parent] < list[index]){
             // swap
             int temp = list[parent];
