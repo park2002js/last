@@ -43,7 +43,7 @@ void kruskal(graph *g, int V, int E)
 		}
 	}
 
-	graph_fprint(kruskal_fp, &mst, V);
+	graph_fprint("kruskal", kruskal_fp, &mst, V);
 	graph_destroy(&mst, V);
 	free(edges);
 	fclose(kruskal_fp);

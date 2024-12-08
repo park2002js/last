@@ -62,7 +62,7 @@ int graph_check_cycle(graph *g, int V)
 	return 0;
 }
 
-void graph_fprint(FILE *f, graph *g, int V)
+void graph_fprint(const char *msg, FILE *f, graph *g, int V)
 {
 	int span = 0;
 
@@ -70,11 +70,11 @@ void graph_fprint(FILE *f, graph *g, int V)
 		for (int j = 0; j < g->degree[i]; j++) {
 			if (i < g->conn[i][j].x)
 			{
-				fprintf(f, "%d-%d (weight: %d)\n", i, g->conn[i][j].x, g->conn[i][j].y);
+				fprintf(f, "%d %d %d\n", i, g->conn[i][j].x, g->conn[i][j].y);
 				span += g->conn[i][j].y;
 			}
 		}
 	}
 
-	printf("span: %d\n", span);
+	printf("%s span: %d\n", msg, span);
 }

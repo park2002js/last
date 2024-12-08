@@ -45,7 +45,7 @@ void prim(graph *g, int V, int E)
 		mst.conn[v2][mst.degree[v2]++] = (pair) {v1, weight};
 	}
 
-	graph_fprint(prim_fp, &mst, V);
+	graph_fprint("prim", prim_fp, &mst, V);
 	graph_destroy(&mst, V);
 	free(vis);
 	free(vset);
