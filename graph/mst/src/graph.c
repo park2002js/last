@@ -62,9 +62,26 @@ int graph_check_cycle(graph *g, int V)
 	return 0;
 }
 
+int graph_check_spanning_tree(graph *g, int V)
+{
+	int *vis = calloc(V, sizeof(int));
+	int cycle = __graph_check_cycle(g, 0, -1, vis);
+
+	if (cycle)
+		return 0;
+
+	for (int i = 0; i < V; i++) {
+		if (!vis[i])
+			return 0;
+	}
+
+	return 1;
+}
+
 void graph_fprint(const char *msg, FILE *f, graph *g, int V)
 {
 	int span = 0;
+	int E = 0;
 
 	for (int i = 0; i < V; i++) {
 		for (int j = 0; j < g->degree[i]; j++) {
@@ -72,9 +89,12 @@ void graph_fprint(const char *msg, FILE *f, graph *g, int V)
 			{
 				fprintf(f, "%d %d %d\n", i, g->conn[i][j].x, g->conn[i][j].y);
 				span += g->conn[i][j].y;
+				E++;
 			}
 		}
 	}
 
-	printf("%s span: %d\n", msg, span);
+	printf("%s results: %d vertices, %d edges, %d span\n", msg, V, E, span);
+	if (graph_check_spanning_tree(g, V))
+		puts("the resulting graph is a spanning tree");
 }
