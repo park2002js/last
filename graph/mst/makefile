@@ -1,2 +1,2 @@
 build:
-	gcc src/*.c -o mst.out
+	gcc src/*.c -o mst.exe
