@@ -16,6 +16,7 @@ typedef struct graph graph;
 void graph_init(graph*, int);
 void graph_destroy(graph*, int);
 int graph_check_cycle(graph*, int);
+int graph_check_spanning_tree(graph*, int);
 void graph_fprint(const char*, FILE*, graph*, int);
 
 #endif
